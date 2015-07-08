@@ -15,7 +15,7 @@
     var active = prefs.getBoolean("focusmode_on", false);
     var state = JSON.parse(prefs.getString("focusmode_state", "{}"));
 
-    log.setLevel(require("ko/logging").LOG_DEBUG);
+    //log.setLevel(require("ko/logging").LOG_DEBUG);
     
     this.register = function()
     {

@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Copyright (c) 2010 ActiveState Software Inc.
+# Copyright (c) 2015 ActiveState Software Inc.
 # See the file LICENSE.txt for licensing information.
 
 Import(
@@ -17,7 +17,7 @@ Import(
     'mozIdlIncludePath',
 );
 
-$cons->KoExt("koinstall --packed");
+$cons->KoExt("koinstall --unjarred");   
 
 # For quick development, comment out the "KoExt" call above and
 # use the following. The first time this is run, it will setup the
