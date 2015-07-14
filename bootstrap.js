@@ -6,7 +6,7 @@ var startupData;
 function loadIntoWindow(window) {
     try {
         window.require.setRequirePath("focusmode/", "chrome://focusmode/content/");
-        window.require("focusmode").register();
+        window.require("focusmode/focusmode").register();
     } catch (e) {
         Cu.reportError("Exception while registering Focus Mode");
         Cu.reportError(e);
