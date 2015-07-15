@@ -14,7 +14,9 @@
     
     var active = prefs.getBoolean("focusmode_on", false);
     var state = JSON.parse(prefs.getString("focusmode_state", "{}"));
-
+    var platform = require("sdk/system").platform;
+    var isOSX = platform == "darwin";
+    
     //log.setLevel(require("ko/logging").LOG_DEBUG);
     
     this.register = function()
@@ -32,6 +34,12 @@
                 }
             ]
         });
+        
+        // Work around bug in Komodo <9.2
+        if ( ! "updateToolboxVisibility" in ko.uilayout)
+        {
+            ko.uilayout.updateToolboxVisibility = function() {};
+        }
     }
     
     this.toggle = function()
@@ -52,7 +60,7 @@
         prefs.setBoolean("focusmode_on", true);
         
         if (state.toolbars) ko.commands.doCommand('cmd_toggleToolbars');
-        if (state.menu) ko.commands.doCommand('cmd_toggleMenubar');
+        if (state.menu && ! isOSX) ko.commands.doCommand('cmd_toggleMenubar');
         ko.uilayout.ensurePaneHidden("workspace_left_area");
         ko.uilayout.ensurePaneHidden("workspace_right_area");
         ko.uilayout.ensurePaneHidden("workspace_bottom_area");
@@ -75,7 +83,7 @@
             elems.toolbarsBc.setAttribute("checked", "true");
         }
         
-        if (state.menu && state.menu != _state.menu)
+        if ( ! isOSX && state.menu && state.menu != _state.menu)
         {
             ko.commands.doCommand('cmd_toggleMenubar');
             elems.menuBc.setAttribute("checked", "true");
