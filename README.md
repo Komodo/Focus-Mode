@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/Komodo/Focus-Mode/blob/master/screenshot.png?raw=true)
+![Screenshot](screenshot.png)
 
 Plain and simple, this adds a new keybinding and menu entry (under the View menu)
 which allows you to quickly toggle all panes, toolbars and menus.
