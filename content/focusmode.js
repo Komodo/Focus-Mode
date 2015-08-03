@@ -25,14 +25,18 @@
             label: "Toggle Focus Mode"
         });
         
-        menu.register("Toggle Focus Mode", this.toggle.bind(this), {
-            command: "ko.commands.doCommandAsync('cmd_focusmode')",
+        menu.register({
+            id: "menu_toggleFocusMode",
+            label: "Toggle Focus Mode",
             context: [
                 {
                     select: "#popup_view",
                     before: "#menu_view_tabs"
                 }
-            ]
+            ],
+            attributes: {
+                oncommand: "ko.commands.doCommandAsync('cmd_focusmode')"
+            }
         });
         
         // Work around bug in Komodo <9.2
