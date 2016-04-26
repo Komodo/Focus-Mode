@@ -1,6 +1,5 @@
 (function() {
     const log       = require("ko/logging").getLogger("focusmode");
-    const {Cc, Ci}  = require("chrome");
     const prefs     = require("ko/prefs");
     const commands  = require("ko/commands");
     const menu      = require("ko/menu");
@@ -39,11 +38,25 @@
             }
         });
         
-        // Work around bug in Komodo <9.2
-        if ( ! "updateToolboxVisibility" in ko.uilayout)
-        {
-            ko.uilayout.updateToolboxVisibility = function() {};
-        }
+        var btn = require("ko/button");
+        btn.register({
+            id: "toggleFocusMode",
+            label: "Toggle Focus Mode",
+            toolbar: true,
+            command: "cmd_focusmode",
+            classList: "eye-icon",
+            context: [
+                {
+                    select: "#toggleLeftPane",
+                    where: "before"
+                },
+                {
+                    select: "#unifiedMenuButtonTitlebar",
+                    where: "before"
+                }
+            ]
+        });
+        
     }
     
     this.toggle = function()
