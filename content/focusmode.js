@@ -83,7 +83,9 @@
         ko.uilayout.ensurePaneHidden("workspace_bottom_area");
         
         elems.toolbarsBc.setAttribute("checked", "false");
-        elems.menuBc.setAttribute("checked", "false");
+        
+        if ( ! isOSX)
+            elems.menuBc.setAttribute("checked", "false");
     }
     
     this.disable = function()
