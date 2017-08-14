@@ -3,12 +3,14 @@
     const prefs     = require("ko/prefs");
     const commands  = require("ko/commands");
     const menu      = require("ko/menu");
+    const w         = require("ko/windows").getMain();
+    const ko        = w.ko;
     
     var elems = {
-        toolbars: document.getElementById("main-toolboxrow-wrapper"),
-        toolbarsBc: document.getElementById("cmd_toggleToolbars"),
-        menu: document.getElementById("toolbar-menubar"),
-        menuBc: document.getElementById("cmd_toggleMenubar")
+        toolbars: w.document.getElementById("main-toolboxrow-wrapper"),
+        toolbarsBc: w.document.getElementById("cmd_toggleToolbars"),
+        menu: w.document.getElementById("toolbar-menubar"),
+        menuBc: w.document.getElementById("cmd_toggleMenubar")
     }
     
     var active = prefs.getBoolean("focusmode_on", false);
